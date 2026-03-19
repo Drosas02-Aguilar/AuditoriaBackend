@@ -3,7 +3,7 @@ package com.Auditorias.auditoria.Entity;
 import java.util.List;
 
 
-public class SeriveceResult<T> {
+public class ServiceResult<T> {
     
     public boolean correct;
     public int status;
