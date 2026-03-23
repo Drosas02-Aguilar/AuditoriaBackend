@@ -11,6 +11,7 @@ public class ServiceResult<T> {
     public T Object;
     public List<T> Objects;
     public Exception ex;
+    public String message;
     
     
 }
