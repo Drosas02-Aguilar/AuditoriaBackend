@@ -60,7 +60,7 @@ public class AuthRestcontroller {
            String token = jtJwtUtil.GenerarToken(usuarios.getCorreo(),usuarios.getRol());
            
            result.Object = usuarios;
-           result.ErrorMessage = token;
+           result.message = token;
            result.correct = true;
            result.status = 200;
            
