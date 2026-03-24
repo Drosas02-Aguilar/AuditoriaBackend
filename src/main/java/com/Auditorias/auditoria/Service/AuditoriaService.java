@@ -33,7 +33,7 @@ public class AuditoriaService {
     public List<EventoAuditoria> ListarEventos(int page, int size) {
 
         Pageable pageable = PageRequest.of(page, size,
-                Sort.by("horarioEvento").descending());
+                Sort.by("horarioevento").descending());
 
         Page<EventoAuditoria> pagina = iEventoAuditoria.findAllByOrderByHorarioeventoDesc(pageable);
         return pagina.getContent();

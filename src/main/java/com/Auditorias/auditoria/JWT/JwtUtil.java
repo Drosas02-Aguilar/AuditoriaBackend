@@ -13,7 +13,7 @@ public class JwtUtil {
     ServiceResult serviceResult = new ServiceResult();
 
     private static final String secret = "MiClaveSecretaSuperSeguraParaJWT2024XYZ123456789";
-    private static final long expiration = 900000;
+    private static final long expiration = 86400000L;
 
     private Key ObtenerKey() {
         return Keys.hmacShaKeyFor(secret.getBytes());

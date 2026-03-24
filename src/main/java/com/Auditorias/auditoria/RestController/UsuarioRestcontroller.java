@@ -32,7 +32,7 @@ public class UsuarioRestcontroller {
     @GetMapping
     public ResponseEntity<ServiceResult<Usuarios>> ListarUsuarios(
             @RequestParam(required = false) String rol,
-            @RequestParam(required = false) int activo,
+            @RequestParam(required = false) Integer activo,
             @RequestParam(defaultValue = "0") int page,
             @RequestParam(defaultValue = "10") int size) {
 
@@ -87,7 +87,7 @@ public class UsuarioRestcontroller {
 
         ServiceResult<Usuarios> result = new ServiceResult<>();
         try {
-            Usuarios creado = usuarioService.CrearUsuarios(usuarios);
+                Usuarios creado = usuarioService.CrearUsuarios(usuarios);
 
             if (creado != null) {
                 result.Object = creado;
@@ -112,7 +112,7 @@ public class UsuarioRestcontroller {
             @RequestBody Usuarios datosNuevos) {
         ServiceResult<Usuarios> result = new ServiceResult<>();
         try {
-            Usuarios actualizado = usuarioService.ActualizarUsuario(id, datosNuevos);
+                Usuarios actualizado = usuarioService.ActualizarUsuario(id, datosNuevos);
             if (actualizado != null) {
                 result.Object = actualizado;
                 result.correct = true;

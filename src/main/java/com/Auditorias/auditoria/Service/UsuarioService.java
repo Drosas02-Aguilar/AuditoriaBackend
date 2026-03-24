@@ -23,7 +23,7 @@ public class UsuarioService {
 
     public List<Usuarios> ListarUsuarios(String rol, Integer activo, int page, int size) {
         Pageable pageable = PageRequest.of(page, size,
-                Sort.by("fechaRegistro").descending());
+                Sort.by("fecharegistro").descending());
         Page<Usuarios> pagina;
 
         if (rol != null && activo != null) {
