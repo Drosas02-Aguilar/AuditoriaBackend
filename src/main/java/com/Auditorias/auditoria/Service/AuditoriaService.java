@@ -40,4 +40,11 @@ public class AuditoriaService {
 
     }
 
+    public List<EventoAuditoria> ObtenerTodosEventos() {
+        return iEventoAuditoria.findAllByOrderByHorarioeventoDesc(
+                PageRequest.of(0, Integer.MAX_VALUE, Sort.by("horarioevento").descending())
+        ).getContent();
+
+    }
+
 }

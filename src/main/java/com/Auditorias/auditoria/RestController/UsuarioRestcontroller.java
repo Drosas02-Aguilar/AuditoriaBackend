@@ -160,7 +160,7 @@ public class UsuarioRestcontroller {
     public ResponseEntity<byte[]> ExportatCSV() {
         try {
 
-            byte[] contenido = exportService.ExportarCSV();
+            byte[] contenido = exportService.ExportarUsuariosCSV();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(
                     MediaType.parseMediaType("text/csv; charset=UTF-8"));
@@ -175,7 +175,7 @@ public class UsuarioRestcontroller {
       @GetMapping("/export/pdf")
     public ResponseEntity<byte[]> ExportarPDF() {
         try {
-            byte[] contenido = exportService.exportarPDF();
+            byte[] contenido = exportService.ExportarUsuariosPDF();
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_PDF);
             headers.setContentDispositionFormData("attachment", "usuarios.pdf");
