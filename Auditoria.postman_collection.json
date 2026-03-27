@@ -45,80 +45,6 @@
       "response": []
     },
     {
-      "name": "Listar por Rol",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{base_url}}/info?id=1",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "info"
-          ],
-          "query": [
-            {
-              "key": "id",
-              "value": "1"
-            }
-          ]
-        },
-        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
-      },
-      "response": []
-    },
-    {
-      "name": "Filtrar por activo",
-      "event": [
-        {
-          "listen": "test",
-          "script": {
-            "type": "text/javascript",
-            "exec": [
-              "pm.test(\"Status code is 200\", function () {",
-              "    pm.response.to.have.status(200);",
-              "});"
-            ]
-          }
-        }
-      ],
-      "request": {
-        "method": "GET",
-        "header": [],
-        "url": {
-          "raw": "{{base_url}}/info?id=1",
-          "host": [
-            "{{base_url}}"
-          ],
-          "path": [
-            "info"
-          ],
-          "query": [
-            {
-              "key": "id",
-              "value": "1"
-            }
-          ]
-        },
-        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
-      },
-      "response": []
-    },
-    {
       "name": "Listar con ambos filtros y paginación",
       "event": [
         {
@@ -141,7 +67,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjYXJsb3NAc2lzdGVtYS5jb20iLCJyb2wiOiJVU0VSIiwiaWF0IjoxNzc0Mzc3ODIxLCJleHAiOjE3NzQ0NjQyMjF9.cuiZHnWKOF2wG6lHz1NX98IMlbkWADKkAH6cy5cw-vw",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBzaXN0ZW1hLmNvbSIsInJvbCI6IkFETUlOIiwiaWF0IjoxNzc0NTYxNjMyLCJleHAiOjE3NzQ2NDgwMzJ9.7kjWKeV9ibKfRfdva-W7Yu8Gyb5aeIXlaeISu5Tabu8",
               "type": "string"
             }
           ]
@@ -149,7 +75,7 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/usuarios?rol=USER&activo=1&page=0&size=2",
+          "raw": "http://localhost:8080/usuarios?rol=USER&activo=0&page=0&size=2",
           "protocol": "http",
           "host": [
             "localhost"
@@ -165,7 +91,7 @@
             },
             {
               "key": "activo",
-              "value": "1"
+              "value": "0"
             },
             {
               "key": "page",
@@ -182,36 +108,93 @@
       "response": []
     },
     {
-      "name": "Obtener usuario por ID",
+      "name": "Exportar  Auditoria CSV",
       "event": [
         {
           "listen": "test",
           "script": {
-            "type": "text/javascript",
             "exec": [
               "pm.test(\"Status code is 200\", function () {",
               "    pm.response.to.have.status(200);",
               "});"
-            ]
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
           }
         }
       ],
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBzaXN0ZW1hLmNvbSIsInJvbCI6IkFETUlOIiwiaWF0IjoxNzc0NjM3NDc1LCJleHAiOjE3NzQ3MjM4NzV9.XH-7_uJmmKOpR5JU_ifHMFEb9ZDSCYqh9FL9VUHWpPw",
+              "type": "string"
+            }
+          ]
+        },
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "{{base_url}}/info?id=1",
+          "raw": "http://localhost:8080/auditoria/export/csv",
+          "protocol": "http",
           "host": [
-            "{{base_url}}"
+            "localhost"
           ],
+          "port": "8080",
           "path": [
-            "info"
-          ],
-          "query": [
+            "auditoria",
+            "export",
+            "csv"
+          ]
+        },
+        "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
+      },
+      "response": []
+    },
+    {
+      "name": "Exportar  Auditoria PDF",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "pm.test(\"Status code is 200\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});"
+            ],
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {}
+          }
+        }
+      ],
+      "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
             {
-              "key": "id",
-              "value": "1"
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBzaXN0ZW1hLmNvbSIsInJvbCI6IkFETUlOIiwiaWF0IjoxNzc0NjM3NDc1LCJleHAiOjE3NzQ3MjM4NzV9.XH-7_uJmmKOpR5JU_ifHMFEb9ZDSCYqh9FL9VUHWpPw",
+              "type": "string"
             }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/auditoria/export/pdf",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "auditoria",
+            "export",
+            "pdf"
           ]
         },
         "description": "This is a GET request and it is used to \"get\" data from an endpoint. There is no request body for a GET request, but you can use query parameters to help specify the resource you want data on (e.g., in this request, we have `id=1`).\n\nA successful GET response will have a `200 OK` status, and should include some kind of response body - for example, HTML web content or JSON data."
@@ -242,7 +225,7 @@
           "bearer": [
             {
               "key": "token",
-              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBzaXN0ZW1hLmNvbSIsInJvbCI6IkFETUlOIiwiaWF0IjoxNzc0Mzc3MDU5LCJleHAiOjE3NzQ0NjM0NTl9.MeeyCtJwsj-LssUL5kQXuz13NRdekBWAC2E8ShgCFHk",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBzaXN0ZW1hLmNvbSIsInJvbCI6IkFETUlOIiwiaWF0IjoxNzc0NTYxNjMyLCJleHAiOjE3NzQ2NDgwMzJ9.7kjWKeV9ibKfRfdva-W7Yu8Gyb5aeIXlaeISu5Tabu8",
               "type": "string"
             }
           ]
@@ -251,7 +234,7 @@
         "header": [],
         "body": {
           "mode": "raw",
-          "raw": "{\n    \"nombre\": \"Ana Torres\",\n    \"correo\": \"ana@sistema.com\",\n    \"rol\": \"USER\"\n}",
+          "raw": "{\n    \"nombre\": \"Noe Martienz\",\n    \"correo\": \"noe@sistema.com\",\n    \"rol\": \"USER\"\n}",
           "options": {
             "raw": {
               "language": "json"
@@ -322,10 +305,29 @@
     {
       "name": "Actualizar Usuario",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBzaXN0ZW1hLmNvbSIsInJvbCI6IkFETUlOIiwiaWF0IjoxNzc0NTYxNjMyLCJleHAiOjE3NzQ2NDgwMzJ9.7kjWKeV9ibKfRfdva-W7Yu8Gyb5aeIXlaeISu5Tabu8",
+              "type": "string"
+            }
+          ]
+        },
         "method": "PUT",
         "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n\r\n    \"nombre\": \"Jorge Aguilar\",\r\n    \"correo\": \"jorge@sistema.com\",\r\n    \"rol\": \"ADMIN\"\r\n\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
         "url": {
-          "raw": "http://localhost:8080/usuarios/5",
+          "raw": "http://localhost:8080/usuarios/6",
           "protocol": "http",
           "host": [
             "localhost"
@@ -333,7 +335,7 @@
           "port": "8080",
           "path": [
             "usuarios",
-            "5"
+            "6"
           ]
         }
       },
@@ -342,10 +344,20 @@
     {
       "name": "Desactivar Usuario",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBzaXN0ZW1hLmNvbSIsInJvbCI6IkFETUlOIiwiaWF0IjoxNzc0NTYxNjMyLCJleHAiOjE3NzQ2NDgwMzJ9.7kjWKeV9ibKfRfdva-W7Yu8Gyb5aeIXlaeISu5Tabu8",
+              "type": "string"
+            }
+          ]
+        },
         "method": "PATCH",
         "header": [],
         "url": {
-          "raw": "http://localhost:8080/usuarios/5",
+          "raw": "http://localhost:8080/usuarios/6",
           "protocol": "http",
           "host": [
             "localhost"
@@ -353,7 +365,7 @@
           "port": "8080",
           "path": [
             "usuarios",
-            "5"
+            "6"
           ]
         }
       },
@@ -362,6 +374,16 @@
     {
       "name": "Listado de Auditoria",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBzaXN0ZW1hLmNvbSIsInJvbCI6IkFETUlOIiwiaWF0IjoxNzc0NTYxNjMyLCJleHAiOjE3NzQ2NDgwMzJ9.7kjWKeV9ibKfRfdva-W7Yu8Gyb5aeIXlaeISu5Tabu8",
+              "type": "string"
+            }
+          ]
+        },
         "method": "GET",
         "header": [],
         "url": {
@@ -381,6 +403,16 @@
     {
       "name": "Exportar CSV",
       "request": {
+        "auth": {
+          "type": "bearer",
+          "bearer": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBzaXN0ZW1hLmNvbSIsInJvbCI6IkFETUlOIiwiaWF0IjoxNzc0NjM3NDc1LCJleHAiOjE3NzQ3MjM4NzV9.XH-7_uJmmKOpR5JU_ifHMFEb9ZDSCYqh9FL9VUHWpPw",
+              "type": "string"
+            }
+          ]
+        },
         "method": "GET",
         "header": [],
         "url": {
